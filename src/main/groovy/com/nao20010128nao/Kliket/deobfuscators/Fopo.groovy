@@ -5,7 +5,6 @@ import com.nao20010128nao.Kliket.Utils
 
 import java.util.regex.Pattern
 import java.util.stream.Collectors
-import java.util.zip.DeflaterInputStream
 import java.util.zip.Inflater
 import java.util.zip.InflaterInputStream
 
@@ -35,7 +34,7 @@ class Fopo implements Deobfuscator{
         //phase5
         def source5=source4.substring(2)
         //last (Java has "final" modifier so use this word)
-        def last=simplifyFormat(source5)
+        def last=fixSome(source5)
 
         //write into output
         output.text=last
@@ -128,7 +127,7 @@ class Fopo implements Deobfuscator{
         return tmp
     }
 
-    static String simplifyFormat(String source){
+    static String fixSome(String source){
         String tmp = source.replace("; ", ";\n")
         tmp = tmp.replace("{ ", "{\n")
         tmp = tmp.replace("} ", "}\n")

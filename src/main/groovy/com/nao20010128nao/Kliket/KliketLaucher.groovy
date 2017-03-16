@@ -62,7 +62,7 @@ static usage(cmd,detail="required",Closure doInFinal=null){
     println "$cmd argument is $detail."
     println "Usage:"
     println "--input=(filename) - Input file name (full path) of the PHP file. (required)"
-    println "--output=(dirname) - Output directory to save deobfuscated result (default is to append \"_nullified\" on the \"input\"'s filename)"
+    println "--output=(dirname) - Output directory to save deobfuscated result (default is to append \".deobs\" on the \"input\"'s filename)"
     println "--mode=(mode) - Which mode to use for debobfuscation. (required)"
     if(doInFinal!=null)
         doInFinal()

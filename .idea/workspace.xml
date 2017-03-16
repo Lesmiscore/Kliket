@@ -55,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KliketLaucher.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="KliketLaucher.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/KliketLaucher.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -77,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fopo.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Fopo.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/deobfuscators/Fopo.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="117">
+              <caret line="134" column="40" lean-forward="false" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
               <folding>
                 <element signature="e#49#91#0" expanded="true" />
               </folding>
@@ -102,12 +102,12 @@
       <file leaf-file-name="JavaUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nao20010128nao/Kliket/JavaUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="32" column="49" lean-forward="false" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+            <state relative-caret-position="255">
+              <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#946#947#0" expanded="true" />
-                <element signature="e#1002#1003#0" expanded="true" />
+                <element signature="e#905#906#0" expanded="true" />
+                <element signature="e#961#962#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -517,10 +517,10 @@
         <option value="$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/deobfuscators/Deobfuscator.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/Utils.groovy" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nao20010128nao/Kliket/JavaUtils.java" />
         <option value="$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/KliketLaucher.groovy" />
         <option value="$PROJECT_DIR$/build/file.php" />
         <option value="$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/deobfuscators/Fopo.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nao20010128nao/Kliket/JavaUtils.java" />
       </list>
     </option>
   </component>
@@ -654,7 +654,7 @@
       <module name="Kliket_main" />
       <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/KliketLaucher.groovy" />
       <setting name="vmparams" value="" />
-      <setting name="params" value="--input=&quot;C:\Users\nao\Documents\GitHub\Kliket\build\file.php&quot; --mode=FOPO" />
+      <setting name="params" value="--input=&quot;C:\Users\nao\Downloads\skywars_v7.phar_extracted\src\skywars\gtimer.php&quot; --mode=FOPO" />
       <setting name="workDir" value="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket" />
       <setting name="debug" value="false" />
       <method />
@@ -1070,18 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nao20010128nao/Kliket/JavaUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="32" column="49" lean-forward="false" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#946#947#0" expanded="true" />
-            <element signature="e#1002#1003#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/Utils.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1103,16 +1091,6 @@
         <state relative-caret-position="102">
           <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/KliketLaucher.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="e#35#94#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1167,12 +1145,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/skywars_v7.phar_extracted/src/skywars/main.deobs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5015">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/skywars_v7.phar_extracted/src/skywars/start.deobs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/skywars_v7.phar_extracted/src/skywars/gtimer.deobs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/deobfuscators/Fopo.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="117">
+          <caret line="134" column="40" lean-forward="false" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
           <folding>
             <element signature="e#49#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nao20010128nao/Kliket/JavaUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/com/nao20010128nao/Kliket/KliketLaucher.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="e#35#94#0" expanded="true" />
           </folding>
         </state>
       </provider>

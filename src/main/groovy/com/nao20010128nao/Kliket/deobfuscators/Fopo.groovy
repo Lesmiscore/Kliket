@@ -139,7 +139,7 @@ class Fopo implements Deobfuscator{
         int indent = 0
         return tmp.readLines().stream().map{line->
             indent-=line.count("}")
-            String result="\t"*indent+line
+            String result="\t"*Math.max(indent,0)+line
             indent+=line.count("{")
             indent+=result.matches("case '([^'\\\\]|\\\\\\\\|\\\\')*?':")?1:0
             indent+=result.matches("case \"([^'\\\\]|\\\\\\\\|\\\\')*?\":")?1:0

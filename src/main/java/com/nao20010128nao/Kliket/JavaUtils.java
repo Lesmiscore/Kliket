@@ -4,9 +4,6 @@ import com.nao20010128nao.Kliket.deobfuscators.Fopo;
 
 import java.util.function.Function;
 
-/**
- * Created by nao on 2017/03/16.
- */
 public class JavaUtils {
     public static String rot13(String value) {
         char[] array = value.toCharArray();
@@ -32,5 +29,4 @@ public class JavaUtils {
     public static Function<String,String> deflateBase64StringAndRot13(){
         return Fopo::deflateBase64StringAndRot13;
     }
-
 }

@@ -6,6 +6,8 @@ import com.nao20010128nao.Kliket.Utils
 import java.util.regex.Pattern
 import java.util.stream.Collectors
 import java.util.zip.DeflaterInputStream
+import java.util.zip.Inflater
+import java.util.zip.InflaterInputStream
 
 /**
  * ref: https://github.com/NewDelion/Deobfuscator/blob/master/FOPO.cs
@@ -40,7 +42,7 @@ class Fopo implements Deobfuscator{
     }
 
     static String decodeBase64(String input){
-        new String(Base64.decoder.decode(input))
+        new String(Base64.decoder.decode(input as String))
     }
 
     static String cutString(String input, String head){
@@ -48,7 +50,7 @@ class Fopo implements Deobfuscator{
         if(start==-1)return null
         start+=head.length()+1
         def end=input.indexOf("\"",start)
-        input.substring(start,end-start)
+        input.substring(start,end)
     }
 
     static String applySubstitutions(String input) {
@@ -63,22 +65,22 @@ class Fopo implements Deobfuscator{
             result = result
                     .replace("\\${Integer.toString(i,8)}", curChar)
                     .replace("\\x${Utils.to2DigitHex(i).toUpperCase()}", curChar)
-                    .replace("\\x${Integer.toString(i,8).toUpperCase()}", curChar)
+                    .replace("\\x${Utils.to2DigitHex(i).toLowerCase()}", curChar)
         }
         return result
     }
 
     static Map<String, String> findAllSubstitution(String input) {
         Map<String, String> result = [:]
-        def first=Pattern.compile('\\$(?<varName>[a-z0-9]*)=\"(?<text>[a-zA-Z0-9_]*)\";')
-        def firstMatcher=first.matcher(input)
-        (firstMatcher.groupCount()/2).times{
-            result[firstMatcher.group(it*2)]=firstMatcher.group(it*2+1)
+        def first = Pattern.compile('\\$([a-z0-9]*)=\"([a-zA-Z0-9_]*)\";')
+        def firstMatcher = first.matcher(input)
+        while(firstMatcher.find()) {
+            result[firstMatcher.group(1)] = firstMatcher.group(2)
         }
-        def second=Pattern.compile('\\$(?<varName>[a-z0-9]*)\\.=\"(?<text>[a-zA-Z0-9_]*)\";')
-        def secondMatcher=second.matcher(input)
-        (secondMatcher.groupCount()/2).times{
-            result[secondMatcher.group(it*2)]+=secondMatcher.group(it*2+1)
+        def second = Pattern.compile('\\$([a-z0-9]*)\\.=\"([a-zA-Z0-9_]*)\";')
+        def secondMatcher = second.matcher(input)
+        while(secondMatcher.find()) {
+            result[secondMatcher.group(1)] += secondMatcher.group(2)
         }
         return result
     }
@@ -86,7 +88,7 @@ class Fopo implements Deobfuscator{
     static String applySubstitutions(String input, Map<String, String> substitutions) {
         String result = input
         substitutions.each {
-            result=result.replace("\$$it.key(", "$it.value(")
+            result=result.replace('$'+it.key+'(', it.value+'(')
         }
         return result
     }
@@ -96,12 +98,12 @@ class Fopo implements Deobfuscator{
         if (start == -1) return null
         start += header.length() + 1
         int end = input.indexOf("\"", start)
-        String r1 = input.substring(start, end - start)
+        String r1 = input.substring(start, end)
         start = input.indexOf(header + "\"", end + 1)
         if (start == -1) return null
         start += header.length() + 1
         end = input.indexOf("\"", start)
-        String r2 = input.substring(start, end - start)
+        String r2 = input.substring(start, end)
         return [ r1, r2 ]
     }
 
@@ -110,7 +112,7 @@ class Fopo implements Deobfuscator{
     }
 
     static String deflateBase64StringIntoString(String input) {
-        new String(new DeflaterInputStream(new ByteArrayInputStream(Base64.decoder.decode(input))).bytes,"UTF-8")
+        new String(new InflaterInputStream(new ByteArrayInputStream(Base64.decoder.decode(input)),new Inflater(true)).bytes,"UTF-8")
     }
 
     static String doDecompressLoop(String input, boolean disableRot13) {

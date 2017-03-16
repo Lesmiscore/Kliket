@@ -1,0 +1,102 @@
+import java.util.zip.ZipEntry
+import java.util.zip.ZipInputStream
+import java.util.zip.ZipOutputStream
+
+group 'Kliket'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'net.sf.jopt-simple:jopt-simple:6.0-alpha-1'
+}
+
+
+task("assembleExecutableJar",type: Jar){
+    dependsOn "copyGeneratedJar"
+    archiveName "${name}.jar"
+    manifest {
+        attributes['Main-Class']="com.nao20010128nao.Kliket.KliketLauncher"
+    }
+
+    from zipTree(new File(buildDir,"tmp/$name-${version}.jar"))
+}
+
+task("copyGeneratedJar",type: Copy){
+    dependsOn "gatherClasses"
+    def gathered=jar.archivePath
+    def tmp=new File(buildDir,"tmp")
+    into tmp
+    from(gathered.parentFile) {
+        include '*.jar'
+    }
+}
+
+task("gatherClasses"){
+    dependsOn "assemble"
+    doLast {
+        def exclude="^META-INF/.*\\.(SF|RSA|DSA|MF)\$"
+
+        def archive = jar.archivePath
+        def backup = new File("${archive.absolutePath}.bak")
+        backup.delete()
+        archive.renameTo(backup)
+        new ZipOutputStream(new BufferedOutputStream(archive.newOutputStream())).with { zos ->
+            zos.method = DEFLATED
+            //Merge libraries
+            project.configurations.compile*.toURI().each { singleJar ->
+                new ZipInputStream(new File(singleJar).newInputStream()).with { zis ->
+                    ZipEntry entry = null
+                    while ((entry = zis.nextEntry) != null) {
+                        if (entry.name.matches(exclude))
+                            continue
+                        try {
+                            zos.putNextEntry(new ZipEntry(entry.name))
+                            zos.write new UnclosableInputStreamWrapper(zis).bytes
+                            //System.console().readLine()
+                        } catch (e) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+
+            }
+            //Merge my code
+            new ZipInputStream(backup.newInputStream()).with { zis ->
+                ZipEntry entry = null
+                while ((entry = zis.nextEntry) != null) {
+                    if (entry.name.matches(exclude))
+                        continue
+                    try {
+                        zos.putNextEntry(new ZipEntry(entry.name))
+                        zos.write new UnclosableInputStreamWrapper(zis).bytes
+                        //System.console().readLine()
+                    } catch (e) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+
+            zos.finish()
+            zos.close()
+        }
+    }
+}
+
+class UnclosableInputStreamWrapper extends FilterInputStream{
+    UnclosableInputStreamWrapper(InputStream inputStream) {
+        super(inputStream)
+    }
+    @Override
+    void close() throws IOException {
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Kliket.iml" filepath="$PROJECT_DIR$/.idea/modules/Kliket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Kliket_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Kliket_main.iml" group="Kliket" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Kliket_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Kliket_test.iml" group="Kliket" />
+    </modules>
+  </component>
+</project>

@@ -12,4 +12,4 @@ FOPO? Don't give up. Try this!
 Multiple file support and PHAR support are coming soon...
 
 # Thanks
-[NewDelion](https://github.com/NewDelion/Deobfuscator) for CSharp version of FOPO deobfuscator.
+[NewDelion](https://github.com/NewDelion/Deobfuscator) for CSharp version of FOPO and Pipsomania deobfuscator.

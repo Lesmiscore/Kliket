@@ -29,4 +29,7 @@ public class JavaUtils {
     public static Function<String,String> deflateBase64StringAndRot13(){
         return Fopo::deflateBase64StringAndRot13;
     }
+    public static String intAsCharToString(int ch){
+        return new String(new char[]{(char)ch});
+    }
 }

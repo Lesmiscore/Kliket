@@ -2,11 +2,12 @@ package com.nao20010128nao.Kliket
 
 import com.nao20010128nao.Kliket.deobfuscators.Deobfuscator
 import com.nao20010128nao.Kliket.deobfuscators.Fopo
+import com.nao20010128nao.Kliket.deobfuscators.Pipsomania
 import joptsimple.OptionParser
 
 import java.util.regex.Pattern
 
-final deobfuscators=["fopo":Fopo]
+final deobfuscators=["fopo":Fopo,"pipsomania":Pipsomania]
 
 def opt=new OptionParser()
 opt.accepts("input").withRequiredArg()

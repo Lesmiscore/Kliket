@@ -8,6 +8,8 @@ import java.util.stream.Collectors
 import java.util.zip.Inflater
 import java.util.zip.InflaterInputStream
 
+import static com.nao20010128nao.Kliket.Utils.*
+
 /**
  * ref: https://github.com/NewDelion/Deobfuscator/blob/master/FOPO.cs
  */
@@ -57,17 +59,7 @@ class Fopo implements Deobfuscator{
         return applySubstitutions(a, findAllSubstitution(a))
     }
 
-    static String simplifyAscii(String input) {
-        String result = input
-        for (int i = 32; i <= 126; i++) {
-            def curChar=Character.valueOf(i as char).toString()
-            result = result
-                    .replace("\\${Integer.toString(i,8)}", curChar)
-                    .replace("\\x${Utils.to2DigitHex(i).toUpperCase()}", curChar)
-                    .replace("\\x${Utils.to2DigitHex(i).toLowerCase()}", curChar)
-        }
-        return result
-    }
+
 
     static Map<String, String> findAllSubstitution(String input) {
         Map<String, String> result = [:]
@@ -125,25 +117,5 @@ class Fopo implements Deobfuscator{
                 break
         }
         return tmp
-    }
-
-    static String fixSome(String source){
-        String tmp = source.replace("; ", ";\n")
-        tmp = tmp.replace("{ ", "{\n")
-        tmp = tmp.replace("} ", "}\n")
-        tmp = tmp.replace("class ", "\nclass ")
-        tmp = Pattern.compile(" (namespace [a-zA-Z0-9_]*;)").matcher(tmp).replaceAll("\n\$1\n")
-        tmp = Pattern.compile("(case '([^'\\\\]|\\\\\\\\|\\\\')*?'): ").matcher(tmp).replaceAll("\$1:\n")
-        tmp = Pattern.compile("(case \"([^'\\\\]|\\\\\\\\|\\\\')*?\"): ").matcher(tmp).replaceAll("\$1:\n")
-        int indent = 0
-        return tmp.readLines().stream().map{line->
-            indent-=line.count("}")
-            String result="\t"*Math.max(indent,0)+line
-            indent+=line.count("{")
-            indent+=result.matches("case '([^'\\\\]|\\\\\\\\|\\\\')*?':")?1:0
-            indent+=result.matches("case \"([^'\\\\]|\\\\\\\\|\\\\')*?\":")?1:0
-            indent-=line.contains("break;")?1:0
-            return result
-        }.collect(Collectors.toList()).join("\n")
     }
 }
